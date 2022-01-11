@@ -53,6 +53,33 @@
                 overflow-x: hidden;
             }
         }
+        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            border: 2px solid black;
+        }
+        
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
     </style>
 </head>
 
@@ -146,7 +173,7 @@
                     </ul>
                     <ul class="nav navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="Login.html" type="button" class="nav-link   " style="background-color: red; color: white; padding: 12px; font-size: 16px; border-radius: 10px;"><i class="fas fa-sign-in-alt"></i> Registration  </a>
+                            <a href="Login.html" type="button" class="nav-link active " style="background-color: red; color: white; padding: 12px; font-size: 16px; border-radius: 10px;"><i class="fas fa-sign-in-alt"></i> Registration  </a>
                         </li>
 
                     </ul>
@@ -155,8 +182,8 @@
         </nav>
     </div>
     <!-- form start -->
-    <form id="regForm" form name="listForm" action="/action_page.php">
-        <h1>Register:</h1>
+    <form id="regForm" form name="listForm" action="/complete.html">
+        <h1>Registration Form:</h1>
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
             <h3>Terms and Conditions:</h3> <label class="container">
@@ -166,11 +193,11 @@
             <input class="input1" id="checkbox" checked="checked" type="checkbox" />
             <label for="checkbox"> I agree to these  Terms and Conditions .</label>
             <ol>
-                <li>- monthly session fees should be paid before 7th of each month, if delayed ₹100 will be charged extra as late fee </li>
-                <li> - session will be re-scheduled if incase it is not taken on the scheduled day. </li>
-                <li> - if the student does not attend the session on the scheduled day, it will not be re-scheduled. </li>
-                <li>- you will get all the time to time session updates through WhatsApp & or you'll be added to session group.</li>
-                <li> - one time registration fees ₹300/- is mandatory to be paid. </li>
+                <li>monthly session fees should be paid before 7th of each month, if delayed ₹100 will be charged extra as late fee </li>
+                <li>session will be re-scheduled if incase it is not taken on the scheduled day. </li>
+                <li> if the student does not attend the session on the scheduled day, it will not be re-scheduled. </li>
+                <li>you will get all the time to time session updates through WhatsApp & or you'll be added to session group.</li>
+                <li>one time registration fees ₹300/- is mandatory to be paid. </li>
             </ol>
         </div>
         <div class="tab">Personal information
@@ -180,24 +207,93 @@
             <p><input placeholder="Email" oninput="this.className = ''" name="Email"></p>
             <p><input placeholder="Address" oninput="this.className = ''" name="Addr"></p>
         </div>
-        <div class="tab">Contact Info:
-            <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-            <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+        <div class="tab">
+            <br>
+            <h3 style="text-align: center;">Have You registered already?</h3><br>
+            <p style="text-align: center;">
+
+                Yes <input class="input2" type="checkbox" name="choice" value="0" onchange="checkTotal()" /> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No
+                <input class="input2" type="checkbox" name="choice" value="300" onchange="checkTotal()" /><br/>
+            </p>
         </div>
-        <div class="tab">Birthday:
-            <input type="checkbox" name="choice" value="2" onchange="checkTotal()" />2<br/>
-            <input type="checkbox" name="choice" value="5" onchange="checkTotal()" />5<br/>
-            <input type="checkbox" name="choice" value="10" onchange="checkTotal()" />10<br/>
-            <input type="checkbox" name="choice" value="20" onchange="checkTotal()" />20<br/>
-            <input type="checkbox" name="choice" value="2" onchange="checkTotal()" />2<br/>
-            <input type="checkbox" name="choice" value="5" onchange="checkTotal()" />5<br/>
-            <input type="checkbox" name="choice" value="10" onchange="checkTotal()" />10<br/>
-            <input type="checkbox" name="choice" value="20" onchange="checkTotal()" />20<br/> Total: <input type="text" size="2" name="total" value="0" />
+        <div class="tab">
+
+            <h3 style="text-align: center;">Select Courses:</h3>
+
+            <table>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Personal</th>
+                    <th>Group Session</th>
+                </tr>
+                <tr>
+                    <td>Classical Music</td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="3000" onchange="checkTotal()" /></td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Light Music</td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="3000" onchange="checkTotal()" /></td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="1500" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Natya Sangeet</td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="3000" onchange="checkTotal()" /></td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Riyaz Session</td>
+                    <td> </td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="1000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Awaazsadhana</td>
+                    <td> </td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td> Harmonium With Singing</td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2500" onchange="checkTotal()" /></td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Chakra Music Therapy</td>
+                    <td> </td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="10000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td> Harmonium</td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2500" onchange="checkTotal()" /></td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Synthesizer</td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2500" onchange="checkTotal()" /></td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Tabla/Dholaki</td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2500" onchange="checkTotal()" /></td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2800" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Guitar</td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2500" onchange="checkTotal()" /></td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="2000" onchange="checkTotal()" /></td>
+                </tr>
+                <tr>
+                    <td>Yoga</td>
+                    <td> </td>
+                    <td> <input class="input2" type="checkbox" name="choice" value="1000" onchange="checkTotal()" /></td>
+                </tr>
+
+            </table>
+            <br>
+            <b style="align-items: center;">Total:</b> <input type="text" size="2" name="total" value="0" />
+            <br>
+
         </div>
-        <div class="tab">Login Info:
-            <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
-        </div>
+
         <div style="overflow:auto;">
             <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
@@ -420,6 +516,7 @@
             document.listForm.total.value = sum;
         }
     </script>
+
 </body>
 
 </html>
